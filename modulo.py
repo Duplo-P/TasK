@@ -16,6 +16,7 @@ class BD:
         return True
     
     def read(self):
+        self.check()
         with open(self.bd) as date:
             arq = json.load(date)
         return arq
@@ -28,19 +29,40 @@ class BD:
             json.dump(date_update, date, indent = 8)
         
     def addBd(self, date:dict[str])-> None:
-        self.check()
-        self.save(date)
+        try:
+            self.check()
+            self.save(date)
+        except:
+            print("Dados Não Gravado")
+            
 
-        
-        
 class Tarefa:
     def __init__(self):
-        self.list = []
+        self.bd = BD()
         
-    def add(self, task):
-        self.list.append(task)
-        return "OK"
-    
+    def add(self, task: dict[str, int]):
+        self.bd.addBd(task)
+        
+    def delete(self, Id:str):
+        bd = self.bd.read()
+        if Id in list(bd.keys()):
+            x = bd.pop(Id)
+            self.bd.save(bd)
+            return f"Tarefa: {x["Tarefa"]} Removida."
+        else:
+            return f"Tarefa: {Id} Não existe."
+        
+    def Done(self, Id):
+        bd = self.bd.read()
+        if Id in list(bd.keys()):
+            bd[Id]["Estado"] = "[\U00002713]"
+            self.bd.save(bd)
+            return f"Tarefa: {bd[Id]["Tarefa"]} Concluída."
+        else:
+            return f"Tarefa: {Id} Não existe."
+        
+        
     def surch(self):
-        pass
+        for chave, valor in self.bd.read().items():
+            print(f"Id: {chave}\tTarefa: {valor["Tarefa"]}\tEstado: {valor["Estado"]}\n")
         
