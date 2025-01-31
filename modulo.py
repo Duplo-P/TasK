@@ -20,14 +20,14 @@ class BD:
             arq = json.load(date)
         return arq
     
-    def save(self, dados) -> None:
+    def save(self, dados:dict[str]) -> None:
         date_update = self.read()
         list_key = date_update.keys()
-        date_update[str(int(list_key[-1]) + 1)] = dados 
-        with open(self.bd) as date:
+        date_update[str(int(list(list_key)[-1]) + 1)] = dados 
+        with open(self.bd, "w") as date:
             json.dump(date_update, date, indent = 8)
         
-    def addBd(self, date)-> None:
+    def addBd(self, date:dict[str])-> None:
         self.check()
         self.save(date)
 
