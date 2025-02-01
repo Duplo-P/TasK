@@ -1,3 +1,4 @@
+from modulo import *
 import os 
 import colorama as color
 
@@ -20,13 +21,95 @@ def corTxt(cor: int, txt: str):
 def size():
     largura, _= os.get_terminal_size()
     return largura
-def sar():
-    print(corTxt(0,"Sair?"))
-    print(corTxt(0,"Sim ( S )\t ou Não ( N )"))
+
+def sair():
+    txt = corTxt(2,"Sim ( S )\t") + " ou " + corTxt(0,"\tNão ( N )")
+    while True:
+        os.system("clear")
+        print(corTxt(4,"SAIR?\n").center(size()))
+        print(txt.center(size()))
+        op = input("->> ").upper()
+        if op == "S":
+            os.system("clear")
+            return exit(corTxt(0,"Programa termindado.."))
+        elif op == "N":
+            return menu()
+        else:
+            print("Escolha uma das Opções.")
+            
+def pergunta():
+    print(corTxt(3,"S ( Sair ) Enter ( Continuar )"))
+    op = input("->> ").upper()
+    if op == "S":
+        os.system("clear")
+        return menu()
+    
+def saida():
+    input(corTxt(3,"Preciona Enter para sair..."))
+    os.system("clear")
+    
+def ajudar():
+    os.system("clear")
+    print(corTxt(4, "AJUDA").center(size())) 
+    print("Descrição da ajuda.")   
+    saida()    
+
+def apagar(obj):
+    while True:
+        os.system("clear")
+        print(corTxt(4,"APAGAR")) 
+        obj.surch()
+        id = input(corTxt(11,"Digite o Id: "))
+        print(corTxt(1, obj.delete(id)))
+        pergunta()
+
+def add(obj):
+    while True:
+        os.system("clear")
+        print(corTxt(4,"ADD").center(size()))
+        tarefa = input("Tarefa: ").title()
+        estado = "Em Progresso"
+        obj.add({"Tarefa":tarefa, "Estado":estado})
+        print(corTxt(1, "Tarefa Guardado com Sucesso."))
+        pergunta()
+        
+def concluir(obj):
+    while True:
+        os.system("clear")
+        print(corTxt(4,"CONCLUIR").center(size()))
+        obj.surch()
+        id = input("Tarefa: ")
+        print(corTxt(1, obj.done(id)))
+        pergunta()
+
+def mostrar(obj):
+    os.system("clear")
+    print(corTxt(4,"CONSUTAR\n").center(size()))
+    obj.surch()
+    saida()
+    
 def menu():
-    print(corTxt(4, "BEM VINDO AO GESTASK\n").center(size()))
-    print(corTxt(5,"\n1 - Criar Tarefa\n2 - Concluir Tarefa\n3 - Apagar Tarefa\n4 - Ajuda\n5 - Sair").center(size()))
-    op = input("-->> ")
+    os.system("clear")
+    Task = Tarefa()
+    while True:
+        print(corTxt(4, "BEM VINDO AO GESTASK\n").center(size()))
+        print(corTxt(5,"\n1 - Criar Tarefa\n2 - Concluir Tarefa\n3 - Apagar Tarefa\n4 - Mostrar\n5 - Ajuda\n6 - Sair").center(size()))
+        op = input("-->> ")
+        if op == "1":
+            add(Task)
+        elif op == "2":
+            concluir(Task)
+        elif op == "3":
+            apagar(Task)
+        elif op == "4":
+            mostrar(Task)
+        elif op == "5":
+            ajudar()
+        elif op == "6":
+            sair()
+        else:
+            os.system("clear")
+            print("Escolhe uma das opções.")
    
 #--------------------------------RUN-----------------
 menu()

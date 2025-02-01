@@ -6,7 +6,7 @@ class BD:
         self.bd = "bd.json"
         
     def criarBd(self) -> None:
-        dados = {"0":" "}
+        dados = {"0":{"Tarefa":"Instalação do TasK", "Estado":"Feito"}}
         with open(self.bd, "w") as date:
             json.dump(dados, date, indent = 8)
             
@@ -35,6 +35,11 @@ class BD:
         except:
             print("Dados Não Gravado")
             
+    def safety(self, date_update):
+        with open(self.bd, "w") as date:
+            json.dump(date_update, date, indent = 8)
+        
+            
 
 class Tarefa:
     def __init__(self):
@@ -47,22 +52,22 @@ class Tarefa:
         bd = self.bd.read()
         if Id in list(bd.keys()):
             x = bd.pop(Id)
-            self.bd.save(bd)
+            self.bd.safety(bd)
             return f"Tarefa: {x["Tarefa"]} Removida."
         else:
             return f"Tarefa: {Id} Não existe."
         
-    def Done(self, Id):
+    def done(self, Id):
         bd = self.bd.read()
         if Id in list(bd.keys()):
             bd[Id]["Estado"] = "[\U00002713]"
-            self.bd.save(bd)
+            self.bd.safety(bd)
             return f"Tarefa: {bd[Id]["Tarefa"]} Concluída."
         else:
             return f"Tarefa: {Id} Não existe."
         
-        
     def surch(self):
         for chave, valor in self.bd.read().items():
             print(f"Id: {chave}\tTarefa: {valor["Tarefa"]}\tEstado: {valor["Estado"]}\n")
+
         
