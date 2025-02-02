@@ -4,61 +4,57 @@ Este é um programa de gestão de tarefas desenvolvido em Python. Ele permite ad
 
 ## Tecnologias Usadas
 
-    * Linguagem: python
-    * Biblioteca: colorama
+* Linguagem: python
+* Biblioteca: colorama
 ## Composição do Projecto
 
-    * Dois arquivos python - main.py e modulo
+* Dois arquivos python - main.py e modulo
 ## Funcionalidades
 
-    ### Adicionar Tarefa:
-        * Opção: Adicionar Tarefa.
-        * Descrição: Permite adicionar uma nova tarefa à * lista.
-        * Instruções:
-            Digite a opção **1** no prompt.
-            O programa solicitará a descrição da tarefa. Digite a descrição e pressione Enter.
-            A tarefa será adicionada à lista.
+### Adicionar Tarefa:
+* Opção: Adicionar Tarefa.
+* Descrição: Permite adicionar uma nova tarefa à * lista.
+* Instruções:
+    Digite a opção **1** no prompt.
+    O programa solicitará a descrição da tarefa. Digite a descrição e pressione Enter.
+    A tarefa será adicionada à lista.
+### Concluir Tarefa:
+* Opção: Concluir Tarefa.
+* Descrição: Permite marcar uma tarefa como concluída.
+* Instruções:
+    Digite a opção **2** no prompt.
+    O programa exibirá a lista de tarefas com seus respectivos números.
+    Digite o número da tarefa que deseja concluir e pressione Enter.
+    A tarefa será marcada como concluída.
 
-    ### Concluir Tarefa:
-        * Opção: Concluir Tarefa.
-        * Descrição: Permite marcar uma tarefa como concluída.
-        * Instruções:
-            Digite a opção **2** no prompt.
-            O programa exibirá a lista de tarefas com seus respectivos números.
-            Digite o número da tarefa que deseja concluir e pressione Enter.
-            A tarefa será marcada como concluída.
-
-    ### Apagar Tarefa:
-        * Opção: Apagar
-        * Descrição: Permite remover uma tarefa da lista.
-        * Instruções:
-            Digite a opção **3** no prompt.
-            O programa exibirá a lista de tarefas com seus respectivos números.
-            Digite o número da tarefa que deseja apagar e pressione Enter.
-            A tarefa será removida da lista.
-
-    ### Consultar Tarefa:
-        * Opção: Mostrar
-        * Descrição: Permite visualizar os detalhes de uma tarefa específica.
-        * Instruções:
-            Digite a opção **4** no prompt.
-            O programa exibirá a lista de tarefas com seus respectivos números.
-            Digite o número da tarefa que deseja consultar e pressione Enter.
-            O programa exibirá a descrição da tarefa.
-
-    ### Ajuda:
-        * Opção: Ajuda
-        * Descrição: Exibe este manual de instruções.
-        * Instruções:
-            Digite a opção **5** no prompt.
-            O programa exibirá este manual de instruções.
-
-    ### Sair:
-        * Opção: Sair
-        * Descrição: Encerra o programa.
-        * Instruções:
-            Digite a opção **6** no prompt.
-            O programa será encerrado.
+### Apagar Tarefa:
+* Opção: Apagar
+* Descrição: Permite remover uma tarefa da lista.
+* Instruções:
+    Digite a opção **3** no prompt.
+    O programa exibirá a lista de tarefas com seus respectivos números.
+    Digite o número da tarefa que deseja apagar e pressione Enter.
+    A tarefa será removida da lista.
+### Consultar Tarefa:
+* Opção: Mostrar
+* Descrição: Permite visualizar os detalhes de uma tarefa específica.
+* Instruções:
+    Digite a opção **4** no prompt.
+    O programa exibirá a lista de tarefas com seus respectivos números.
+    Digite o número da tarefa que deseja consultar e pressione Enter.
+    O programa exibirá a descrição da tarefa.
+### Ajuda:
+* Opção: Ajuda
+* Descrição: Exibe este manual de instruções.
+* Instruções:
+    Digite a opção **5** no prompt.
+    O programa exibirá este manual de instruções.
+### Sair:
+* Opção: Sair
+* Descrição: Encerra o programa.
+* Instruções:
+    Digite a opção **6** no prompt.
+    O programa será encerrado.
 
 ## Observações
 
@@ -97,4 +93,4 @@ Este projeto está sob a licença MIT.
 
 Autor
 
-[Pedrito Pedro]
+*Pedrito Pedro*
