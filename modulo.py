@@ -121,7 +121,7 @@ class Tarefa:
             self.bd.safety(bd)
             return f"Tarefa: {bd[Id]["Tarefa"]} Concluída."
         else:
-            return f"Tarefa: {Id} Não existe."
+            return f"Tarefa: {Id.upper()} Não existe."
         
     def surch(self):
         for chave, valor in self.bd.read().items():
