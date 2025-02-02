@@ -1,6 +1,6 @@
 # TasK
 
-Este é um programa de gestão de tarefas desenvolvido em Python. Ele permite adicionar, concluir, apagar e consultar tarefas, além de oferecer ajuda e a opção de sair.
+    Este é um programa de gestão de tarefas desenvolvido em Python. Ele permite adicionar, concluir, apagar e consultar tarefas, além de oferecer ajuda e a opção de sair.
 
 ## Tecnologias Usadas
 
@@ -86,11 +86,11 @@ Tarefa concluída com sucesso.
 
 ## Contribuições
 
-Este projeto é de código aberto e contribuições são bem-vindas. Sinta-se à vontade para abrir issues e pull requests.
+    Este projeto é de código aberto e contribuições são bem-vindas. Sinta-se à vontade para abrir issues e pull requests.
 ## Licença
 
-Este projeto está sob a licença MIT.  
+    Este projeto está sob a licença MIT.  
 
-Autor
+    Autor
 
-*Pedrito Pedro*
+    *Pedrito Pedro*
