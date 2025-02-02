@@ -1,12 +1,69 @@
 import json
 import os 
+from colorama import Fore
 
 class BD:
     def __init__(self):
         self.bd = "bd.json"
+        self.txt = "instrucao.txt"
         
+    def criarTxt(self):
+        string = """ 
+        Este manual tem como objetivo apresentar e instruir o usuário sobre o programa de gestão de tarefas desenvolvido em Python. O programa permite adicionar, concluir, apagar e consultar tarefas, além de oferecer ajuda e a opção de sair.
+
+Funcionalidades:
+
+    Adicionar Tarefa:
+        Descrição: Permite adicionar uma nova tarefa à lista.
+        Instruções:
+            O programa solicitará a descrição da tarefa. Digite a descrição e pressione Enter.
+            A tarefa será adicionada à lista.
+
+    Concluir Tarefa:
+        Descrição: Permite marcar uma tarefa como concluída.
+        Instruções:
+            O programa exibirá a lista de tarefas com seus respectivos números.
+            Digite o número da tarefa que deseja concluir e pressione Enter.
+            A tarefa será marcada como concluída.
+
+    Apagar Tarefa:
+        Descrição: Permite remover uma tarefa da lista.
+        Instruções:
+            O programa exibirá a lista de tarefas com seus respectivos números.
+            Digite o número da tarefa que deseja apagar e pressione Enter.
+            A tarefa será removida da lista.
+
+    Consultar Tarefa:
+        Descrição: Permite visualizar os detalhes de uma tarefa específica.
+        Instruções:
+            O programa exibirá a lista de tarefas com seus respectivos números.
+
+    Ajuda:
+        Descrição: Exibe este manual de instruções.
+        Instruções:
+            O programa exibirá este manual de instruções.
+
+    Sair:
+        Comando: sair
+        Descrição: Encerra o programa.
+        Instruções:
+            O programa será encerrado.
+Desenvolvido por Duplo P Analytics."""
+        with open(self.txt, "w") as txt:
+            txt.write(string)
+            
+    def checkTxt(self):
+        if not os.path.exists(self.txt):
+            self.criarTxt()
+        return True
+    
+    def readTxt(self):
+        with open(self.txt) as txt:
+            arq = txt.readlines()
+        return arq
+    
     def criarBd(self) -> None:
-        dados = {"0":{"Tarefa":"Instalação do TasK", "Estado":"Feito"}}
+        dados = {"0":{"Tarefa":"Instalação do TasK", "Estado":"[ \U00002713 ]"}}
         with open(self.bd, "w") as date:
             json.dump(dados, date, indent = 8)
             
@@ -60,7 +117,7 @@ class Tarefa:
     def done(self, Id):
         bd = self.bd.read()
         if Id in list(bd.keys()):
-            bd[Id]["Estado"] = "[\U00002713]"
+            bd[Id]["Estado"] = "[ \U00002713 ]"
             self.bd.safety(bd)
             return f"Tarefa: {bd[Id]["Tarefa"]} Concluída."
         else:
@@ -68,6 +125,13 @@ class Tarefa:
         
     def surch(self):
         for chave, valor in self.bd.read().items():
-            print(f"Id: {chave}\tTarefa: {valor["Tarefa"]}\tEstado: {valor["Estado"]}\n")
+            if valor["Estado"] == "[ \U00002713 ]":
+                print(f"Id: {chave}\tDescrição: " + Fore.GREEN + f"{valor["Tarefa"]}" + Fore.RESET + "\tEstado: " + Fore.GREEN + f"{valor["Estado"]}\n"+ Fore.RESET)
+            else:
+                print(f"Id: {chave}\tDescrição: " + Fore.MAGENTA + f"{valor["Tarefa"]}" + Fore.RESET + "\tEstado: " + Fore.MAGENTA + f"{valor["Estado"]}\n"+ Fore.RESET)
 
+    def help(self):
+        self.bd.checkTxt()
+        for txt in self.bd.readTxt():
+            print(txt)
         

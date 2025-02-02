@@ -48,16 +48,16 @@ def saida():
     input(corTxt(3,"Preciona Enter para sair..."))
     os.system("clear")
     
-def ajudar():
+def ajudar(obj):
     os.system("clear")
-    print(corTxt(4, "AJUDA").center(size())) 
-    print("Descrição da ajuda.")   
+    print(corTxt(4, "AJUDA\n").center(size())) 
+    obj.help() 
     saida()    
 
 def apagar(obj):
     while True:
         os.system("clear")
-        print(corTxt(4,"APAGAR")) 
+        print(corTxt(4,"APAGAR\n").center(size())) 
         obj.surch()
         id = input(corTxt(11,"Digite o Id: "))
         print(corTxt(1, obj.delete(id)))
@@ -68,7 +68,7 @@ def add(obj):
         os.system("clear")
         print(corTxt(4,"ADD").center(size()))
         tarefa = input("Tarefa: ").title()
-        estado = "Em Progresso"
+        estado = "[ Em Progresso ]"
         obj.add({"Tarefa":tarefa, "Estado":estado})
         print(corTxt(1, "Tarefa Guardado com Sucesso."))
         pergunta()
@@ -76,7 +76,7 @@ def add(obj):
 def concluir(obj):
     while True:
         os.system("clear")
-        print(corTxt(4,"CONCLUIR").center(size()))
+        print(corTxt(4,"CONCLUIR\n").center(size()))
         obj.surch()
         id = input("Tarefa: ")
         print(corTxt(1, obj.done(id)))
@@ -104,7 +104,7 @@ def menu():
         elif op == "4":
             mostrar(Task)
         elif op == "5":
-            ajudar()
+            ajudar(Task)
         elif op == "6":
             sair()
         else:
